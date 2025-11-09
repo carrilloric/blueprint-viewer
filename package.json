@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@blueprintjs/core": "^5.19.1",
+    "@blueprintjs/datetime": "^6.0.8",
     "@blueprintjs/icons": "^5.23.0",
+    "@blueprintjs/select": "^6.0.8",
+    "@blueprintjs/table": "^6.0.8",
     "next": "^14.2.3",
     "react": "^18.3.1",
+    "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
