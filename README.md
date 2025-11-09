@@ -5,8 +5,9 @@ A comprehensive Next.js 14 application for exploring and interacting with ALL Bl
 ## Features
 
 - **Component Search**: Quickly find components by name or description
-- **Category Filtering**: Filter components by 9 categories
-- **Interactive Examples**: Live, interactive component demonstrations for 40+ components
+- **Category Filtering**: Filter components by 10 categories
+- **Interactive Examples**: Live, interactive component demonstrations for 45+ components
+- **Charts & Graphs**: 5 different chart types with mock data visualization
 - **Code Display**: View the code for each component example
 - **Responsive Design**: Clean, modern UI built with Tailwind CSS
 - **Dark Mode Support**: Automatic dark mode support
@@ -18,6 +19,7 @@ A comprehensive Next.js 14 application for exploring and interacting with ALL Bl
 - TypeScript
 - Tailwind CSS
 - Blueprint.js (@blueprintjs/core, @blueprintjs/icons, @blueprintjs/datetime, @blueprintjs/table, @blueprintjs/select)
+- Recharts (Data visualization and charting library)
 
 ## Getting Started
 
@@ -131,6 +133,13 @@ The explorer includes examples of the following Blueprint component categories:
 ### 🎯 Icons (1 gallery)
 - **Icons Gallery**: 48+ popular Blueprint.js icons with hover tooltips
 
+### 📊 Charts (5 components)
+- **Line Chart**: Trend visualization for time-series data with multiple metrics
+- **Bar Chart**: Comparison charts for revenue, performance, and categories
+- **Pie Chart**: Distribution and percentage visualization
+- **Area Chart**: Cumulative totals and stacked metrics over time
+- **Composed Chart**: Combined bar and line charts for complex analysis
+
 ## Component Categories
 
 1. **Buttons** - Interactive buttons and button groups
@@ -142,6 +151,7 @@ The explorer includes examples of the following Blueprint component categories:
 7. **Date & Time** - Date pickers, time pickers, and range pickers
 8. **Layout** - Panel stacks and collapsible sections
 9. **Icons** - Complete icon gallery with 48+ icons
+10. **Charts** - Data visualization with line, bar, pie, area, and composed charts
 
 ## Features by Category
 
@@ -149,6 +159,12 @@ The explorer includes examples of the following Blueprint component categories:
 - **HTML Table**: Striped, bordered, and interactive tables
 - **Tree**: Expandable/collapsible tree structures perfect for file systems or hierarchical data
 - **Editable Text**: Inline editing for quick data updates
+- **Charts**: Complete charting library with 5 chart types powered by Recharts
+  - Line charts for trends
+  - Bar charts for comparisons
+  - Pie charts for distributions
+  - Area charts for cumulative data
+  - Composed charts for multi-metric analysis
 
 ### Advanced Form Controls
 - **Slider & Range Slider**: Visual numeric input with customizable steps
@@ -164,11 +180,13 @@ Full date and time selection with calendars, time pickers, and range selection w
 
 ## Component Statistics
 
-- **Total Components**: 40+
-- **Categories**: 9
+- **Total Components**: 45+
+- **Categories**: 10
+- **Chart Types**: 5 different chart visualizations
 - **Interactive Examples**: All components have live, working examples
 - **Code Samples**: Every component includes usage code
 - **Icons**: 48+ popular icons in the gallery
+- **Mock Data**: Realistic sample data for all charts
 
 ## Usage Examples
 

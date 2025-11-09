@@ -49,6 +49,24 @@ import {
 } from "@blueprintjs/core";
 import { DateInput, DateRangePicker, TimePicker } from "@blueprintjs/datetime";
 import React, { useState } from "react";
+import {
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  AreaChart,
+  Area,
+  ComposedChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip as RechartsTooltip,
+  Legend,
+  ResponsiveContainer,
+  Cell,
+} from "recharts";
 
 export const categories: ComponentCategory[] = [
   {
@@ -104,6 +122,12 @@ export const categories: ComponentCategory[] = [
     name: "Icons",
     description: "Blueprint.js icon gallery",
     icon: "symbol-diamond",
+  },
+  {
+    id: "charts",
+    name: "Charts",
+    description: "Data visualization charts and graphs",
+    icon: "chart",
   },
 ];
 
@@ -712,6 +736,137 @@ const IconsExample = () => {
   );
 };
 
+// ============== CHART DATA (MOCK) ==============
+const salesData = [
+  { month: "Jan", sales: 4000, revenue: 2400, profit: 1600 },
+  { month: "Feb", sales: 3000, revenue: 1398, profit: 1200 },
+  { month: "Mar", sales: 2000, revenue: 9800, profit: 2800 },
+  { month: "Apr", sales: 2780, revenue: 3908, profit: 2000 },
+  { month: "May", sales: 1890, revenue: 4800, profit: 2181 },
+  { month: "Jun", sales: 2390, revenue: 3800, profit: 2500 },
+  { month: "Jul", sales: 3490, revenue: 4300, profit: 2100 },
+];
+
+const categoryData = [
+  { name: "Electronics", value: 400, color: "#8884d8" },
+  { name: "Clothing", value: 300, color: "#82ca9d" },
+  { name: "Food", value: 200, color: "#ffc658" },
+  { name: "Books", value: 278, color: "#ff8042" },
+  { name: "Other", value: 189, color: "#a4de6c" },
+];
+
+const trafficData = [
+  { time: "00:00", users: 2000, sessions: 3000 },
+  { time: "04:00", users: 1000, sessions: 1500 },
+  { time: "08:00", users: 4000, sessions: 5500 },
+  { time: "12:00", users: 6000, sessions: 8000 },
+  { time: "16:00", users: 5000, sessions: 7000 },
+  { time: "20:00", users: 3500, sessions: 4500 },
+  { time: "24:00", users: 2500, sessions: 3500 },
+];
+
+const performanceData = [
+  { quarter: "Q1", target: 4000, actual: 3800, growth: 3200 },
+  { quarter: "Q2", target: 4500, actual: 4200, growth: 3900 },
+  { quarter: "Q3", target: 5000, actual: 5400, growth: 4800 },
+  { quarter: "Q4", target: 5500, actual: 5100, growth: 5200 },
+];
+
+// ============== CHART EXAMPLES ==============
+const LineChartExample = () => (
+  <Card className="w-full">
+    <h4 className="text-sm font-semibold mb-2 text-gray-700">Monthly Sales Performance</h4>
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={salesData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <RechartsTooltip />
+        <Legend />
+        <Line type="monotone" dataKey="sales" stroke="#8884d8" strokeWidth={2} />
+        <Line type="monotone" dataKey="revenue" stroke="#82ca9d" strokeWidth={2} />
+      </LineChart>
+    </ResponsiveContainer>
+  </Card>
+);
+
+const BarChartExample = () => (
+  <Card className="w-full">
+    <h4 className="text-sm font-semibold mb-2 text-gray-700">Revenue Comparison</h4>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={salesData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="month" />
+        <YAxis />
+        <RechartsTooltip />
+        <Legend />
+        <Bar dataKey="revenue" fill="#8884d8" />
+        <Bar dataKey="profit" fill="#82ca9d" />
+      </BarChart>
+    </ResponsiveContainer>
+  </Card>
+);
+
+const PieChartExample = () => (
+  <Card className="w-full">
+    <h4 className="text-sm font-semibold mb-2 text-gray-700">Sales Distribution by Category</h4>
+    <ResponsiveContainer width="100%" height={300}>
+      <PieChart>
+        <Pie
+          data={categoryData}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={({ name, percent }: any) => `${name}: ${(percent * 100).toFixed(0)}%`}
+          outerRadius={80}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {categoryData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={entry.color} />
+          ))}
+        </Pie>
+        <RechartsTooltip />
+      </PieChart>
+    </ResponsiveContainer>
+  </Card>
+);
+
+const AreaChartExample = () => (
+  <Card className="w-full">
+    <h4 className="text-sm font-semibold mb-2 text-gray-700">Website Traffic Trends</h4>
+    <ResponsiveContainer width="100%" height={300}>
+      <AreaChart data={trafficData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="time" />
+        <YAxis />
+        <RechartsTooltip />
+        <Legend />
+        <Area type="monotone" dataKey="users" stackId="1" stroke="#8884d8" fill="#8884d8" />
+        <Area type="monotone" dataKey="sessions" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+      </AreaChart>
+    </ResponsiveContainer>
+  </Card>
+);
+
+const ComposedChartExample = () => (
+  <Card className="w-full">
+    <h4 className="text-sm font-semibold mb-2 text-gray-700">Quarterly Performance Analysis</h4>
+    <ResponsiveContainer width="100%" height={300}>
+      <ComposedChart data={performanceData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="quarter" />
+        <YAxis />
+        <RechartsTooltip />
+        <Legend />
+        <Bar dataKey="target" fill="#8884d8" />
+        <Line type="monotone" dataKey="actual" stroke="#ff7300" strokeWidth={2} />
+        <Line type="monotone" dataKey="growth" stroke="#82ca9d" strokeWidth={2} strokeDasharray="5 5" />
+      </ComposedChart>
+    </ResponsiveContainer>
+  </Card>
+);
+
 // ============== COMPONENT DEFINITIONS ==============
 export const components: ComponentExample[] = [
   // ========== BUTTONS ==========
@@ -1212,5 +1367,105 @@ toaster.show({
 <Icon icon="search" size={24} />
 <Icon icon="settings" size={24} />`,
     component: IconsExample,
+  },
+
+  // ========== CHARTS ==========
+  {
+    id: "line-chart",
+    name: "Line Chart",
+    category: "charts",
+    description: "Line chart for showing trends over time. Perfect for sales, metrics, and time-series data.",
+    code: `<ResponsiveContainer width="100%" height={300}>
+  <LineChart data={salesData}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="month" />
+    <YAxis />
+    <Tooltip />
+    <Legend />
+    <Line type="monotone" dataKey="sales" stroke="#8884d8" />
+    <Line type="monotone" dataKey="revenue" stroke="#82ca9d" />
+  </LineChart>
+</ResponsiveContainer>`,
+    component: LineChartExample,
+  },
+  {
+    id: "bar-chart",
+    name: "Bar Chart",
+    category: "charts",
+    description: "Bar chart for comparing data across categories. Great for revenue, performance, and comparative analysis.",
+    code: `<ResponsiveContainer width="100%" height={300}>
+  <BarChart data={salesData}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="month" />
+    <YAxis />
+    <Tooltip />
+    <Legend />
+    <Bar dataKey="revenue" fill="#8884d8" />
+    <Bar dataKey="profit" fill="#82ca9d" />
+  </BarChart>
+</ResponsiveContainer>`,
+    component: BarChartExample,
+  },
+  {
+    id: "pie-chart",
+    name: "Pie Chart",
+    category: "charts",
+    description: "Pie chart for displaying proportions and percentages. Ideal for market share, distribution, and composition data.",
+    code: `<ResponsiveContainer width="100%" height={300}>
+  <PieChart>
+    <Pie
+      data={categoryData}
+      cx="50%"
+      cy="50%"
+      label
+      outerRadius={80}
+      fill="#8884d8"
+      dataKey="value"
+    >
+      {categoryData.map((entry, index) => (
+        <Cell key={\`cell-\${index}\`} fill={entry.color} />
+      ))}
+    </Pie>
+    <Tooltip />
+  </PieChart>
+</ResponsiveContainer>`,
+    component: PieChartExample,
+  },
+  {
+    id: "area-chart",
+    name: "Area Chart",
+    category: "charts",
+    description: "Area chart for showing cumulative totals over time. Perfect for traffic, usage, and stacked metrics.",
+    code: `<ResponsiveContainer width="100%" height={300}>
+  <AreaChart data={trafficData}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="time" />
+    <YAxis />
+    <Tooltip />
+    <Legend />
+    <Area type="monotone" dataKey="users" stackId="1" stroke="#8884d8" fill="#8884d8" />
+    <Area type="monotone" dataKey="sessions" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+  </AreaChart>
+</ResponsiveContainer>`,
+    component: AreaChartExample,
+  },
+  {
+    id: "composed-chart",
+    name: "Composed Chart",
+    category: "charts",
+    description: "Combined chart mixing bars and lines. Excellent for target vs actual comparisons and multi-metric analysis.",
+    code: `<ResponsiveContainer width="100%" height={300}>
+  <ComposedChart data={performanceData}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="quarter" />
+    <YAxis />
+    <Tooltip />
+    <Legend />
+    <Bar dataKey="target" fill="#8884d8" />
+    <Line type="monotone" dataKey="actual" stroke="#ff7300" />
+    <Line type="monotone" dataKey="growth" stroke="#82ca9d" strokeDasharray="5 5" />
+  </ComposedChart>
+</ResponsiveContainer>`,
+    component: ComposedChartExample,
   },
 ];
