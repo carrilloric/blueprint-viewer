@@ -15,4 +15,4 @@ export interface ComponentCategory {
   icon?: string;
 }
 
-export type CategoryId = "buttons" | "forms" | "navigation" | "overlays" | "data" | "feedback";
+export type CategoryId = "buttons" | "forms" | "navigation" | "overlays" | "data" | "feedback" | "datetime" | "layout" | "icons";
